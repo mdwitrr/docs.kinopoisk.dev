@@ -1,80 +1,322 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: https://api.kinopoisk.dev/
 
 # kinopoisk.dev
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Документация к API кинопоиска [kinopoisk.dev](https://kinopoisk.dev)
 
-## Questions Collection [/questions]
+API позволяет получать максимум информации с кинопоиска о фильмах, сериалах и персонах.
+Всего в api 5 моделей.
 
-### List All Questions [GET]
+# GET /movie
+Movie хранит в себе фильмы, сериалы, мультфильмы, мультсериалы и аниме. То есть тут все картины с кинопоиска. Подробная [схема модели](#reference/0/resource-2)
+содержит информацию информацию о каждом ключе
+
+### Поиск конкретного фильма по ID [/id/{id}]
++ Parameters
+    + id (number)  - ID фильма
+
+#### Пример запроса [GET]
 
 + Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+          "id": 326,
+          "externalId": {
+            "tmdb": 278,
+            "imdb": "tt0111161"
+          },
+          "type": "movie",
+          "name": "Побег из Шоушенка",
+          "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+          "slogan": "Страх - это кандалы. Надежда - это свобода",
+          "year": 1994,
+          "poster": {
+            "url": "https://st.kp.yandex.net/images/film_big/326.jpg",
+            "previewUrl": "https://st.kp.yandex.net/images/film_iphone/iphone360_326.jpg"
+          },
+          "backdrop": {
+            "url": "https://www.themoviedb.org/t/p/original/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg",
+            "previewUrl": "https://www.themoviedb.org/t/p/w500/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg"
+          },
+          "rating": {
+            "tmdb": 8.7,
+            "kp": 9.1,
+            "imdb": 9.3
+          },
+          "votes": {
+            "tmdb": 18120,
+            "kp": 746454,
+            "imdb": 2339097
+          },
+          "videos": {
+            "trailers": [
+              {
+                "_id": "601190b2c3bc36048af02bd3",
+                "url": "https://www.youtube.com/watch?v=GOniB0Ykp1M",
+                "name": "Побег из Шоушенка трейлер на русском",
+                "site": "YouTube",
+                "size": 360,
+                "type": "TRAILER"
+              }
+            ],
+            "teasers": []
+          },
+          "budget": {
+            "value": 25000000,
+            "currency": "$"
+          },
+          "fees": {
+            "world": {
+              "value": 28418687,
+              "currency": "$"
+            },
+            "russia": {
+              "value": 87432,
+              "currency": "$"
+            },
+            "usa": {
+              "value": 28341469,
+              "currency": "$"
+            }
+          },
+          "distributors": {
+            "distributor": "Иноекино",
+            "distributorRelease": "Videogram, Союз-Видео"
+          },
+          "premiere": {
+            "country": "Канада",
+            "world": "1994-09-10T00:00:00.000Z",
+            "russia": "2019-10-24T00:00:00.000Z",
+            "bluray": "1999-09-01T00:00:00.000Z",
+            "dvd": "2009-08-27T00:00:00.000Z"
+          },
+          "images": {
+            "postersCount": 57,
+            "backdropsCount": 23,
+            "framesCount": 59
+          },
+          "status": "Выпущен",
+          "movieLength": 142,
+          "productionCompanies": [
+            {
+              "name": "Castle Rock Entertainment",
+              "url": "https://www.themoviedb.org/t/p/original/7znWcbDd4PcJzJUlJxYqAlPPykp.png",
+              "previewUrl": "https://www.themoviedb.org/t/p/w500/7znWcbDd4PcJzJUlJxYqAlPPykp.png"
+            }
+          ],
+          "spokenLanguages": [
+            {
+              "name": "English",
+              "nameEn": "English"
+            }
+          ],
+          "facts": [
+            {
+              "value": "Фильм снят по мотивам повести Стивена Кинга «Рита Хейуорт и спасение из Шоушенка» (Rita Hayworth and Shawshank Redemption), опубликованной в составе сборника «Четыре сезона» (Different Seasons, 1982)."
+            },
+            {
+              "value": "Съемки проходили в Мэнсфилдской исправительной колонии, что в штате Огайо. Тюрьма находилась в таком плачевном состоянии, что пришлось потратить немало бюджетных средств на приведение её в должный вид."
+            },
+            {
+              "value": "Стивен Кинг согласился продать права на свое произведение практически даром, так как с Фрэнком их связывает давняя крепкая дружба. Произошло это после того, как Фрэнк довольно успешно экранизировал рассказ Кинга «Женщина в палате». С тех пор они практически не виделись, но, тем не менее, вели активную переписку. Встреча произошла лишь после того, как Фрэнк проявил недюжий интерес к «Шоушенку»."
+            },
+            {
+              "value": "Американское общество защиты животных выступило с критикой в адрес фильма, в котором единственным представителем фауны стал ворон старика Брукса. В картине есть сцена кормления птицы червяком, найденном во время обеда в тарелке главного героя фильма. Общество настояло на том, чтобы была использована уже мертвая личинка, погибшая своей естественной смертью. После того, как такая особь была найдена, сцену отсняли."
+            },
+            {
+              "value": "Роль Томми Уильямса изначально была написана под Брэда Питта."
+            },
+            {
+              "value": "Картина, которую смотрят заключенные, - это «Гильда»."
+            },
+            {
+              "value": "Начальник тюрьмы Нортон насвистывает гимн «Eine feste Burg ist unser Gott», название которого переводится примерно так: «Могучая крепость и есть наш бог»."
+            }
+          ],
+          "genres": [
+            {
+              "name": "драма"
+            }
+          ],
+          "countries": [
+            {
+              "name": "США"
+            }
+          ],
+          "seasonsInfo": [],
+          "persons": [
+            {
+              "id": 24262,
+              "name": "Фрэнк Дарабонт",
+              "enName": "Frank Darabont",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_24262.jpg",
+              "enProfession": "director"
+            },
+            {
+              "id": 7987,
+              "name": "Тим Роббинс",
+              "enName": "Tim Robbins",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_7987.jpg",
+              "enProfession": "actor",
+              "description": "Andy Dufresne"
+            },
+            {
+              "id": 6750,
+              "name": "Морган Фриман",
+              "enName": "Morgan Freeman",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_6750.jpg",
+              "enProfession": "actor",
+              "description": "Ellis Boyd «Red» Redding"
+            },
+            {
+              "id": 23481,
+              "name": "Боб Гантон",
+              "enName": "Bob Gunton",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_23481.jpg",
+              "enProfession": "actor",
+              "description": "Warden Norton"
+            },
+            {
+              "id": 24267,
+              "name": "Уильям Сэдлер",
+              "enName": "William Sadler",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_24267.jpg",
+              "enProfession": "actor",
+              "description": "Heywood"
+            },
+            {
+              "id": 20802,
+              "name": "Клэнси Браун",
+              "enName": "Clancy Brown",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_20802.jpg",
+              "enProfession": "actor",
+              "description": "Captain Hadley"
+            },
+            {
+              "id": 8531,
+              "name": "Джил Беллоуз",
+              "enName": "Gil Bellows",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_8531.jpg",
+              "enProfession": "actor",
+              "description": "Tommy"
+            },
+            {
+              "id": 47327,
+              "name": "Марк Ролстон",
+              "enName": "Mark Rolston",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_47327.jpg",
+              "enProfession": "actor",
+              "description": "Bogs Diamond"
+            },
+            {
+              "id": 50162,
+              "name": "Джеймс Уитмор",
+              "enName": "James Whitmore",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_50162.jpg",
+              "enProfession": "actor",
+              "description": "Brooks Hatlen"
+            },
+            {
+              "id": 24264,
+              "name": "Джеффри ДеМанн",
+              "enName": "Jeffrey DeMunn",
+              "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_24264.jpg",
+              "enProfession": "actor",
+              "description": "1946 D.A."
+            }
+          ],
+          "lists": []
         }
 
-+ Response 201 (application/json)
 
-    + Headers
+## Data Structures
 
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+### Movie (object)
++ id: 326 (number)
++ name: `Побег из Шоушенка` (string)
++ type: `movie` (string)
++ description: `Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника...` (string)
++ slogan: `Страх - это кандалы. Надежда - это свобода` (string)
++ year: 1994 (number)
++ movieLength: 142 (number)
++ status: `Выпущен` (string)
++ externalId: (object)
+    + tmdb: 278 (number)
+    + imdb: `tt0111161` (string)
++ rating: (object)
+    + kp: 9.1 (number)
+    + tmdb: 8.7 (number)
+    + imdb: 9.3 (number)
++ votes: (object)
+    + kp: 746454 (number)
+    + tmdb: 18120 (number)
+    + imdb: 2339097 (number)
++ poster: (object)
+  + url: `https://st.kp.yandex.net/images/film_big/326.jpg` (string)
+  + previewUrl: `https://st.kp.yandex.net/images/film_iphone/iphone360_326.jpg` (string)
++ backdrop: (object)
+  + url: `https://www.themoviedb.org/t/p/original/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg` (string)
+  + previewUrl: `https://www.themoviedb.org/t/p/w500/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg` (string)
++ videos: (object[array])
+  + trailers: (object[array])
+      + url: https://www.youtube.com/watch?v=GOniB0Ykp1M (string)
+      + name: Побег из Шоушенка трейлер на русском (string)
+      + site: YouTube (string)
+      + size: 60 (number)
+      + type: TRAILER (string)
+  + teasers: (object[array])
+      + url: `https://www.youtube.com/watch?v=GOniB0Ykp1M`
+      + name: Побег из Шоушенка тизер на русском (string)
+      + site: YouTube (string)
+      + size: 60 (number)
+      + type: TEASER (string)
++ budget: (object)
+  + value: 25000000 (number)
+  + currency: $ (string)
++ fees: object[object]
+  + world:
+      + value: 28418687 (number)
+      + currency: $ (string)
+  + russia:
+      + value: 87432 (number)
+      + currency: $ (string)
+  + usa:
+      + value: 28341469 (number)
+      + currency: $ (string)
++ distributors (object)
+  + distributor: Иноекино (string)
+  + distributorRelease: `Videogram, Союз-Видео` (string)
++ premiere: (object)
+  + country: Канада (string)
+  + world: `1994-09-10T00:00:00.000Z` (string)
+  + russia: `2019-10-24T00:00:00.000Z` (string)
+  + digital: `2019-10-24T00:00:00.000Z` (string)
+  + bluray: `1999-09-01T00:00:00.000Z` (string)
+  + dvd: `2009-08-27T00:00:00.000Z` (string)
++ images (object)
+  + postersCount: 57 (number)
+  + backdropsCount: 23 (number)
+  + framesCount: 59 (number)
++ productionCompanies (object[array])
+  + name: Castle Rock Entertainment (string)
+  + url: `https://www.themoviedb.org/t/p/original/7znWcbDd4PcJzJUlJxYqAlPPykp.png` (string)
+  + previewUrl: `https://www.themoviedb.org/t/p/w500/7znWcbDd4PcJzJUlJxYqAlPPykp.png` (string)
++ spokenLanguages (object)
+  + name: English (string)
+  + nameEn: English (string)
++ facts (object[array])
+  + value: `Фильм снят по мотивам повести Стивена Кинга «Рита Хейуорт и спасение из Шоушенка» (Rita Hayworth and Shawshank Redemption)...` (string)
++ genres (object[array])
+  + name: драма (string)
++ facts (object[array])
+  + name: США (string)
++ persons (object[array])
+  + id: 7987 (number)
+  + name: Тим Роббинс (string)
+  + enName: Tim Robbins (string)
+  + photo: `htps://st.kp.yandex.net/images/actor_iphone/iphone360_7987.jpg` (string)
+  + enProfesson: actor (string)
+  + description: Any Dufresne (string)
++ seasonsInfo(object[array])
+    + number: 1 (number)
+    + episodesCount: 24 (number)
