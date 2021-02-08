@@ -6,7 +6,8 @@ HOST: https://api.kinopoisk.dev/
 Документация к API кинопоиска [kinopoisk.dev](https://kinopoisk.dev)
 
 API позволяет получать максимум информации с кинопоиска о фильмах, сериалах и персонах.
-Всего в api 5 моделей.
+Всего в api 5 моделей. Искать можно по любому полю в эти моделях. Ниже приведены примеры использования api. Это лишь примеры, а не все возможности api. Не бойтесь эксперементировать.
+При возникновении проблем или ошибок пишите в телеграме @mdwit
 ___
 # GET /movie
 Movie хранит в себе фильмы, сериалы, мультфильмы, мультсериалы и аниме. То есть тут все картины с кинопоиска. Подробная [схема модели](#reference/0/resource-2)
@@ -1665,6 +1666,2179 @@ Movie хранит в себе фильмы, сериалы, мультфиль�
 
 # GET /person
 
+Логика работы поиска по персонам ровно такая же как и по фильмам. 
+Доступные query параметры модели person:
++ Parameters
+    + token: (string) - Токен для авторизации.
+    + search: (string) - Искомое значение.
+    + field: (string) - Ключ по которому необходимо искать.
+    + page: (string) - Номер страницы пагинации `default - 1`
+    + limit: (string) - Количество результатов на страницу `default - 10`
+    + sortField: (string) - Ключ по которому необходимо сортировать.
+    + sortType: (string) -  Тип сортировки.
+
+### Поиск [/person]
+
++ Parameters
+    + search: (string) - Искомое значение
+    + token: `ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06` (string) - Токен для авторизации
+
+#### Поиск персоны по id кинопоиска [GET]
+
++ Parameters
+    + search: 37859 (string) - Искомое значение `37859`
+    + field: id (string) - Поиск по `id`
+
++ Response 200 (application/json)
+
+        {
+            "spouses": null,
+            "id": 37859,
+            "name": "Леонардо ДиКаприо",
+            "enName": "Leonardo DiCaprio",
+            "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_37859.jpg",
+            "profession": [
+                {
+                    "value": "Актер"
+                },
+                {
+                    "value": "Продюсер"
+                },
+                {
+                    "value": "Сценарист"
+                }
+            ],
+            "birthPlace": [
+                {
+                    "value": "Голливуд"
+                },
+                {
+                    "value": "Лос-Анджелес"
+                },
+                {
+                    "value": "Калифорния"
+                },
+                {
+                    "value": "США"
+                }
+            ],
+            "deathPlace": null,
+            "facts": [
+                {
+                    "value": "Полное имя - Леонардо Вильгельм ДиКаприо (Leonardo Wilhelm DiCaprio)."
+                },
+                {
+                    "value": "Леонардо ДиКаприо родился в семье хиппи и вырос в одном из самых опасных пригородов Лос-Анджелеса."
+                },
+                {
+                    "value": "Когда Лео было всего 2,5 года, отец отвел его на популярное детское телешоу - это стало первым появлением будущего актера перед камерой."
+                },
+                {
+                    "value": "Родители ДиКаприо — Джордж (автор комиксов) и Ирмелин (работавшая социальным служащим) развелись, когда ему ещё не исполнился один год, однако в дальнейшем старались воспитывать его по возможности вместе, чтобы не лишать ни отцовской, ни материнской заботы."
+                },
+                {
+                    "value": "Мать Лео выбрала ему столь необычное имя, когда ещё не родившийся сын толкнулся в ней, когда она рассматривала картину Леонардо да Винчи."
+                },
+                {
+                    "value": "В 1997 году был включен в список 50 самых красивых людей мира по версии журнала People."
+                },
+                {
+                    "value": "Учился в John Marshall High School в Лос-Анджелесе (Калифорния)."
+                },
+                {
+                    "value": "Когда актеру было 10 лет, его агент предложил ему сменить имя на более дружелюбное и более американское - Ленни Уильямс."
+                },
+                {
+                    "value": "Отец ДиКаприо происходит из семьи с итало-немецкими корнями. Мать ДиКаприо, Ирмелин ДиКаприо, в девичестве Инденбиркен, родилась в западногерманском Ор-Эркеншвике. Её отцом был Вильхельм Инденбиркен, а матерью — русская Елена Смирнова, которая после переезда в Германию из России вышла замуж и приняла фамилию мужа - Инденбиркен. Сам же ДиКаприо в разговоре с Владимиром Путиным сообщил, что его дед также был русским, и добавил: «Так что я не на четверть, а наполовину русский»."
+                },
+                {
+                    "value": "16 сентября 2014 года ДиКаприо был избран посланником мира ООН по проблемам климата."
+                },
+                {
+                    "value": "В ноябре 2013 года ДиКаприо внес три миллиона долларов во Всемирный фонд дикой природы для сохранения и приумножения популяции тигров в Непале."
+                },
+                {
+                    "value": "В 2013 году актер стал совладельцем гоночной команды Venturi Grand Prix Formula E Team для участия в Формуле-Е."
+                }
+            ],
+            "movies": [
+                {
+                    "id": 1033970,
+                    "name": "Чёрная рука",
+                    "alternativeName": "The Black Hand",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Joe Petrosino"
+                },
+                {
+                    "id": 775385,
+                    "name": "Тёмные дела на Норт-Гэнсон-стрит",
+                    "alternativeName": "Mean Business on North Ganson Street",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1057245,
+                    "name": "Рузвельт",
+                    "alternativeName": "Roosevelt",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Theodore Roosevelt"
+                },
+                {
+                    "id": 688656,
+                    "name": "Наследие секретности",
+                    "alternativeName": "Legacy of Secrecy",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Alec Dunway"
+                },
+                {
+                    "id": 572033,
+                    "name": "Дьявол в белом городе (сериал)",
+                    "alternativeName": "The Devil in the White City",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Dr. Henry Howard Holmes"
+                },
+                {
+                    "id": 1077781,
+                    "name": "Убийцы цветочной луны",
+                    "alternativeName": "Killers of the Flower Moon",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Ernest Burkhart"
+                },
+                {
+                    "id": 1338480,
+                    "name": "Не смотри вверх",
+                    "alternativeName": "Don't Look Up",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Dr. Randall Mindy"
+                },
+                {
+                    "id": 1047883,
+                    "name": "Однажды в… Голливуде",
+                    "alternativeName": "Once Upon a Time... in Hollywood",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": "Rick Dalton"
+                },
+                {
+                    "id": 1256785,
+                    "name": "Lil Dicky: Earth (видео)",
+                    "alternativeName": "Lil Dicky: Earth",
+                    "rating": 6.5,
+                    "general": false,
+                    "description": "Leonardo DiCaprio, озвучка"
+                },
+                {
+                    "id": 1298706,
+                    "name": null,
+                    "alternativeName": "BYD: Build Your Dreams (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "BYD Model"
+                },
+                {
+                    "id": 1299818,
+                    "name": null,
+                    "alternativeName": "BYD: Make History (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "BYD Model"
+                },
+                {
+                    "id": 880702,
+                    "name": "Пробы",
+                    "alternativeName": "The Audition",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "Leonardo DiCaprio"
+                },
+                {
+                    "id": 522941,
+                    "name": "Выживший",
+                    "alternativeName": "The Revenant",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "Hugh Glass"
+                },
+                {
+                    "id": 1298432,
+                    "name": null,
+                    "alternativeName": "Jim Beam: Black (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Jim Beam Model"
+                },
+                {
+                    "id": 1300949,
+                    "name": null,
+                    "alternativeName": "Telecom: La tecnologia e importante ma anche tutto il resto (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Telecom Model"
+                },
+                {
+                    "id": 462682,
+                    "name": "Волк с Уолл-стрит",
+                    "alternativeName": "The Wolf of Wall Street",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": "Jordan Belfort"
+                },
+                {
+                    "id": 463724,
+                    "name": "Великий Гэтсби",
+                    "alternativeName": "The Great Gatsby",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": "Jay Gatsby"
+                },
+                {
+                    "id": 1298358,
+                    "name": null,
+                    "alternativeName": "Jim Beam: Bourbon (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Jim Beam Model"
+                },
+                {
+                    "id": 586397,
+                    "name": "Джанго освобожденный",
+                    "alternativeName": "Django Unchained",
+                    "rating": 8.2,
+                    "general": false,
+                    "description": "Calvin Candie"
+                },
+                {
+                    "id": 505796,
+                    "name": "Дж. Эдгар",
+                    "alternativeName": "J. Edgar",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "J. Edgar Hoover"
+                },
+                {
+                    "id": 1299147,
+                    "name": null,
+                    "alternativeName": "Wild Aid: Leonardo DiCaprio and Jackie Chan (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Leonardo DiCaprio"
+                },
+                {
+                    "id": 1299538,
+                    "name": null,
+                    "alternativeName": "Oppo: Find Me (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Oppo Model"
+                },
+                {
+                    "id": 955928,
+                    "name": "Начало: Работа на Кобол (видео)",
+                    "alternativeName": "Inception: The Cobol Job",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "Cobb"
+                },
+                {
+                    "id": 447301,
+                    "name": "Начало",
+                    "alternativeName": "Inception",
+                    "rating": 8.7,
+                    "general": true,
+                    "description": "Cobb"
+                },
+                {
+                    "id": 1363835,
+                    "name": null,
+                    "alternativeName": "Shutter Island: Behind the Shutters (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 472257,
+                    "name": "Телескоп Хаббл в 3D",
+                    "alternativeName": "Hubble 3D",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 397667,
+                    "name": "Остров проклятых",
+                    "alternativeName": "Shutter Island",
+                    "rating": 8.5,
+                    "general": true,
+                    "description": "Teddy Daniels"
+                },
+                {
+                    "id": 1363678,
+                    "name": null,
+                    "alternativeName": "Body of Lies: Interactive Debriefing (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 280932,
+                    "name": "Дорога перемен",
+                    "alternativeName": "Revolutionary Road",
+                    "rating": 7.5,
+                    "general": false,
+                    "description": "Frank Wheeler"
+                },
+                {
+                    "id": 281449,
+                    "name": "Совокупность лжи",
+                    "alternativeName": "Body of Lies",
+                    "rating": 7.2,
+                    "general": false,
+                    "description": "Roger Ferris"
+                },
+                {
+                    "id": 1363680,
+                    "name": null,
+                    "alternativeName": "Blood Diamond: Focus Points (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 1363268,
+                    "name": null,
+                    "alternativeName": "Blood Diamond: Journalism on the Front Line (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 1361281,
+                    "name": null,
+                    "alternativeName": "The Departed: Interviews (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 102376,
+                    "name": "Кровавый алмаз",
+                    "alternativeName": "Blood Diamond",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "Danny Archer"
+                },
+                {
+                    "id": 81314,
+                    "name": "Отступники",
+                    "alternativeName": "The Departed",
+                    "rating": 8.5,
+                    "general": true,
+                    "description": "Billy"
+                },
+                {
+                    "id": 6374,
+                    "name": "Авиатор",
+                    "alternativeName": "The Aviator",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": "Howard Hughes"
+                },
+                {
+                    "id": 1363677,
+                    "name": null,
+                    "alternativeName": "Gangs of New York: History of the Five Points (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 1363694,
+                    "name": null,
+                    "alternativeName": "Gangs of New York: Set Design (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Self"
+                },
+                {
+                    "id": 324,
+                    "name": "Поймай меня, если сможешь",
+                    "alternativeName": "Catch Me If You Can",
+                    "rating": 8.5,
+                    "general": true,
+                    "description": "Frank Abagnale Jr."
+                },
+                {
+                    "id": 678,
+                    "name": "Банды Нью-Йорка",
+                    "alternativeName": "Gangs of New York",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": "Amsterdam Vallon"
+                },
+                {
+                    "id": 6870,
+                    "name": "Кафе «Донс Плам»",
+                    "alternativeName": "Don's Plum",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": "Derek"
+                },
+                {
+                    "id": 6871,
+                    "name": "Пляж",
+                    "alternativeName": "The Beach",
+                    "rating": 7.4,
+                    "general": false,
+                    "description": "Richard"
+                },
+                {
+                    "id": 3550,
+                    "name": "Знаменитость",
+                    "alternativeName": "Celebrity",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "Brandon Darrow"
+                },
+                {
+                    "id": 6872,
+                    "name": "Человек в железной маске",
+                    "alternativeName": "The Man in the Iron Mask",
+                    "rating": 7.3,
+                    "general": false,
+                    "description": "King Louis / Phillippe"
+                },
+                {
+                    "id": 2213,
+                    "name": "Титаник",
+                    "alternativeName": "Titanic",
+                    "rating": 8.4,
+                    "general": false,
+                    "description": "Jack Dawson"
+                },
+                {
+                    "id": 1884,
+                    "name": "Комната Марвина",
+                    "alternativeName": "Marvin's Room",
+                    "rating": 7.2,
+                    "general": false,
+                    "description": "Hank"
+                },
+                {
+                    "id": 2771,
+                    "name": "Ромео + Джульетта",
+                    "alternativeName": "Romeo + Juliet",
+                    "rating": 7.3,
+                    "general": false,
+                    "description": "Romeo"
+                },
+                {
+                    "id": 6873,
+                    "name": "Полное затмение",
+                    "alternativeName": "Total Eclipse",
+                    "rating": 7.3,
+                    "general": false,
+                    "description": "Arthur Rimbaud"
+                },
+                {
+                    "id": 6175,
+                    "name": "Дневник баскетболиста",
+                    "alternativeName": "The Basketball Diaries",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "Jim Carroll"
+                },
+                {
+                    "id": 2273,
+                    "name": "Быстрый и мертвый",
+                    "alternativeName": "The Quick and the Dead",
+                    "rating": 7.3,
+                    "general": false,
+                    "description": "Kid"
+                },
+                {
+                    "id": 1299126,
+                    "name": null,
+                    "alternativeName": "Honda: Miracle Civic (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Honda Model"
+                },
+                {
+                    "id": 6874,
+                    "name": "Вечеринка с выстрелами по ногам",
+                    "alternativeName": "The Foot Shooting Party",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "Bud"
+                },
+                {
+                    "id": 4466,
+                    "name": "Что гложет Гилберта Грейпа?",
+                    "alternativeName": "What's Eating Gilbert Grape",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": "Arnie Grape"
+                },
+                {
+                    "id": 6875,
+                    "name": "Жизнь этого парня",
+                    "alternativeName": "This Boy's Life",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": "Toby"
+                },
+                {
+                    "id": 1819,
+                    "name": "Ядовитый плющ",
+                    "alternativeName": "Poison Ivy",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "Guy (в титрах: Leonardo Di Caprio)"
+                },
+                {
+                    "id": 6876,
+                    "name": "Зубастики 3",
+                    "alternativeName": "Critters 3",
+                    "rating": 5.6,
+                    "general": false,
+                    "description": "Josh"
+                },
+                {
+                    "id": 1300644,
+                    "name": null,
+                    "alternativeName": "Kraft: Kraft Free Singles (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Kraft Model"
+                },
+                {
+                    "id": 1319243,
+                    "name": null,
+                    "alternativeName": "Street Safe, Street Smart (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Alex"
+                },
+                {
+                    "id": 229287,
+                    "name": "Родители (сериал)",
+                    "alternativeName": "Parenthood",
+                    "rating": 5,
+                    "general": false,
+                    "description": "Garry Buckman"
+                },
+                {
+                    "id": 229224,
+                    "name": "Изгои (сериал)",
+                    "alternativeName": "The Outsiders",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "Kid Fighting Scout"
+                },
+                {
+                    "id": 445879,
+                    "name": "Новые приключения Лэсси (сериал)",
+                    "alternativeName": "The New Lassie",
+                    "rating": 6.2,
+                    "general": false,
+                    "description": "Glen"
+                },
+                {
+                    "id": 584195,
+                    "name": "Магическое зеркало (сериал)",
+                    "alternativeName": "Troldspejlet",
+                    "rating": 6.3,
+                    "general": false,
+                    "description": "Arnie Grape"
+                },
+                {
+                    "id": 1299715,
+                    "name": null,
+                    "alternativeName": "Fred Meyer: You'll Find it at Freddy's (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "Freddy's Model"
+                },
+                {
+                    "id": 258058,
+                    "name": "Проблемы роста (сериал)",
+                    "alternativeName": "Growing Pains",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "Luke Brower"
+                },
+                {
+                    "id": 79907,
+                    "name": "Санта-Барбара (сериал)",
+                    "alternativeName": "Santa Barbara",
+                    "rating": 4.3,
+                    "general": false,
+                    "description": "Young Mason Capwell"
+                },
+                {
+                    "id": 1033970,
+                    "name": "Чёрная рука",
+                    "alternativeName": "The Black Hand",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 775385,
+                    "name": "Тёмные дела на Норт-Гэнсон-стрит",
+                    "alternativeName": "Mean Business on North Ganson Street",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 104911,
+                    "name": "Рукопись Ченселлора",
+                    "alternativeName": "The Chancellor Manuscript",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1057245,
+                    "name": "Рузвельт",
+                    "alternativeName": "Roosevelt",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 221318,
+                    "name": "Расставание в голубом",
+                    "alternativeName": "The Deep Blue Good-By",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 688656,
+                    "name": "Наследие секретности",
+                    "alternativeName": "Legacy of Secrecy",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 455135,
+                    "name": "Манускрипт ниндзя",
+                    "alternativeName": "Ninja Scroll",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 279913,
+                    "name": "Заговор глупцов",
+                    "alternativeName": "Conspiracy of Fools",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 572033,
+                    "name": "Дьявол в белом городе (сериал)",
+                    "alternativeName": "The Devil in the White City",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 418795,
+                    "name": "Атари",
+                    "alternativeName": "Atari",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 973060,
+                    "name": null,
+                    "alternativeName": "The Corporation",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1046636,
+                    "name": null,
+                    "alternativeName": "Finding 52",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 406023,
+                    "name": "Акира",
+                    "alternativeName": "Akira",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1381246,
+                    "name": null,
+                    "alternativeName": "Theodore Roosevelt (мини-сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 1239434,
+                    "name": "Парни что надо (сериал)",
+                    "alternativeName": "The Right Stuff",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 1421584,
+                    "name": null,
+                    "alternativeName": "Whose Vote Counts, Explained (мини-сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер (3 эпизода, 2020)"
+                },
+                {
+                    "id": 1188798,
+                    "name": "Грант (мини-сериал)",
+                    "alternativeName": "Grant",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 1281157,
+                    "name": "Курс на экологичность",
+                    "alternativeName": "And We Go Green",
+                    "rating": 0,
+                    "general": false,
+                    "description": "продюсер (produced by)"
+                },
+                {
+                    "id": 826373,
+                    "name": "Дело Ричарда Джуэлла",
+                    "alternativeName": "Richard Jewell",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": "продюсер (produced by)"
+                },
+                {
+                    "id": 1269611,
+                    "name": "Лёд в огне",
+                    "alternativeName": "Ice on Fire",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1235103,
+                    "name": "Море теней",
+                    "alternativeName": "Sea of Shadows",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 1217704,
+                    "name": "Борьба: жизнь и утраченное искусство Шукальского",
+                    "alternativeName": "Struggle: The Life and Lost Art of Szukalski",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 927495,
+                    "name": "Робин Гуд: Начало",
+                    "alternativeName": "Robin Hood",
+                    "rating": 5.6,
+                    "general": false,
+                    "description": "продюсер (produced by) (p.g.a.)"
+                },
+                {
+                    "id": 1207526,
+                    "name": null,
+                    "alternativeName": "Jonestown: Terror in the Jungle (мини-сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 630222,
+                    "name": "Истерия",
+                    "alternativeName": "Delirium",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1049410,
+                    "name": null,
+                    "alternativeName": "Fire Chasers (мини-сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 971228,
+                    "name": "Пластиковый океан",
+                    "alternativeName": "A Plastic Ocean",
+                    "rating": 8.2,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 677768,
+                    "name": "Закон ночи",
+                    "alternativeName": "Live by Night",
+                    "rating": 6.5,
+                    "general": false,
+                    "description": "продюсер (produced by)"
+                },
+                {
+                    "id": 997939,
+                    "name": "Игра цвета слоновой кости",
+                    "alternativeName": "The Ivory Game",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 1002696,
+                    "name": "Спасти планету",
+                    "alternativeName": "Before the Flood",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 610843,
+                    "name": null,
+                    "alternativeName": "Catching the Sun",
+                    "rating": 0,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 885610,
+                    "name": "Скотозаговор",
+                    "alternativeName": "Cowspiracy: The Sustainability Secret",
+                    "rating": 8.5,
+                    "general": true,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 842876,
+                    "name": "Вирунга",
+                    "alternativeName": "Virunga",
+                    "rating": 7.4,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 462682,
+                    "name": "Волк с Уолл-стрит",
+                    "alternativeName": "The Wolf of Wall Street",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 462240,
+                    "name": "Из пекла",
+                    "alternativeName": "Out of the Furnace",
+                    "rating": 6.5,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 677880,
+                    "name": "Va-банк",
+                    "alternativeName": "Runner Runner",
+                    "rating": 6.1,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 462482,
+                    "name": "Мартовские иды",
+                    "alternativeName": "The Ides of March",
+                    "rating": 7.1,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 470179,
+                    "name": "Красная Шапочка",
+                    "alternativeName": "Red Riding Hood",
+                    "rating": 6.1,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 400615,
+                    "name": "Дитя тьмы",
+                    "alternativeName": "Orphan",
+                    "rating": 6.9,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 231154,
+                    "name": "Одиннадцатый час",
+                    "alternativeName": "The 11th Hour",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 77455,
+                    "name": "Садовник Эдема",
+                    "alternativeName": "Gardener of Eden",
+                    "rating": 6,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 6374,
+                    "name": "Авиатор",
+                    "alternativeName": "The Aviator",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 6808,
+                    "name": "Убить президента. Покушение на Ричарда Никсона",
+                    "alternativeName": "The Assassination of Richard Nixon",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "исполнительный продюсер"
+                },
+                {
+                    "id": 231154,
+                    "name": "Одиннадцатый час",
+                    "alternativeName": "The 11th Hour",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1188798,
+                    "name": "Грант (мини-сериал)",
+                    "alternativeName": "Grant",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1119724,
+                    "name": null,
+                    "alternativeName": "Hell's Club Part 2. Another Night (видео)",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 667529,
+                    "name": "Окончательный монтаж – дамы и господа!",
+                    "alternativeName": "Final Cut: Hölgyeim és uraim",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 780355,
+                    "name": null,
+                    "alternativeName": "Premio Donostia a Meryl Streep (ТВ)",
+                    "rating": 0,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 258797,
+                    "name": "Бомбы и блокбастеры Тинсельтауна",
+                    "alternativeName": "Boffo! Tinseltown's Bombs and Blockbusters",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 496685,
+                    "name": "70-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The 70th Annual Academy Awards",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 277673,
+                    "name": "Розанна (сериал)",
+                    "alternativeName": "Roseanne",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": null
+                },
+                {
+                    "id": 1421584,
+                    "name": null,
+                    "alternativeName": "Whose Vote Counts, Explained (мини-сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя - рассказчик"
+                },
+                {
+                    "id": 1322864,
+                    "name": "92-я церемония вручения премии «Оскар»",
+                    "alternativeName": "92nd Annual Academy Awards",
+                    "rating": 6.9,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 1291335,
+                    "name": "26-я церемония вручения премии Гильдии киноактеров",
+                    "alternativeName": "The 26th Annual Screen Actors Guild Awards",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя - презентатор & Nominee"
+                },
+                {
+                    "id": 1338499,
+                    "name": "77-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "77th Annual Golden Globe Awards",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя - презентатор / Nominee"
+                },
+                {
+                    "id": 1281157,
+                    "name": "Курс на экологичность",
+                    "alternativeName": "And We Go Green",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 1269611,
+                    "name": "Лёд в огне",
+                    "alternativeName": "Ice on Fire",
+                    "rating": 0,
+                    "general": false,
+                    "description": "рассказчик, озвучка"
+                },
+                {
+                    "id": 1049102,
+                    "name": "Спилберг (ТВ)",
+                    "alternativeName": "Spielberg",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 1009160,
+                    "name": "89-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The Oscars",
+                    "rating": 5.6,
+                    "general": false,
+                    "description": "играет самого себя - презентатор"
+                },
+                {
+                    "id": 1008776,
+                    "name": "74-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "74th Golden Globe Awards",
+                    "rating": 6,
+                    "general": false,
+                    "description": "играет самого себя - презентатор"
+                },
+                {
+                    "id": 1002696,
+                    "name": "Спасти планету",
+                    "alternativeName": "Before the Flood",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "играет самого себя - рассказчик"
+                },
+                {
+                    "id": 972249,
+                    "name": "Церемония вручения премии MTV Movie Awards 2016 (ТВ)",
+                    "alternativeName": "2016 MTV Movie Awards",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 957240,
+                    "name": "88-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The Oscars",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": "играет самого себя - победитель"
+                },
+                {
+                    "id": 968024,
+                    "name": "22-я церемония вручения премии Гильдии киноактеров (ТВ)",
+                    "alternativeName": "22nd Annual Screen Actors Guild Awards",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя - победитель"
+                },
+                {
+                    "id": 968766,
+                    "name": "Невиданный мир: Выживший",
+                    "alternativeName": "A World Unseen: The Revenant",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 958564,
+                    "name": "21-ая ежегодная церемония вручения премии Critics' Choice Awards (ТВ)",
+                    "alternativeName": "21st Annual Critics' Choice Awards",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 956498,
+                    "name": "73-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "73rd Golden Globe Awards",
+                    "rating": 6.4,
+                    "general": false,
+                    "description": "играет самого себя - победитель"
+                },
+                {
+                    "id": 1007907,
+                    "name": "Искусственный интеллект и Матьё (мини-сериал)",
+                    "alternativeName": "L'IA et Mathieu",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 839415,
+                    "name": "Церемония вручения премии MTV Movie Awards 2014 (ТВ)",
+                    "alternativeName": "2014 MTV Movie Awards",
+                    "rating": 6.2,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 817858,
+                    "name": "86-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The Oscars",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 837761,
+                    "name": "Церемония вручения премии Британской киноакадемии 2014 (ТВ)",
+                    "alternativeName": "The EE British Academy Film Awards",
+                    "rating": 6.5,
+                    "general": false,
+                    "description": "играет самого себя - номинант & Presenter"
+                },
+                {
+                    "id": 818889,
+                    "name": "71-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "71st Golden Globe Awards",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - победитель & Presenter"
+                },
+                {
+                    "id": 806008,
+                    "name": "Билет выходного дня (сериал)",
+                    "alternativeName": "Weekend Ticket",
+                    "rating": 5.8,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 730894,
+                    "name": "70-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "70th Golden Globe Awards",
+                    "rating": 7,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 654481,
+                    "name": "69-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 69th Annual Golden Globe Awards",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 794514,
+                    "name": "17-я ежегодная церемония вручения премии Critics' Choice Movie Awards (ТВ)",
+                    "alternativeName": "17th Annual Critics' Choice Movie Awards",
+                    "rating": 5.1,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 780466,
+                    "name": "Крупный план (сериал)",
+                    "alternativeName": "Close Up",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя, Actor"
+                },
+                {
+                    "id": 646183,
+                    "name": "Любовь, которую мы несём (ТВ)",
+                    "alternativeName": "The Love We Make",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 592107,
+                    "name": "Большой утренний гул в прямом эфире (сериал)",
+                    "alternativeName": "Big Morning Buzz Live",
+                    "rating": 6.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 557863,
+                    "name": "Охладите! Глобальное потепление",
+                    "alternativeName": "Cool It",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 521497,
+                    "name": "Жиль Жакоб, гражданин Канн (ТВ)",
+                    "alternativeName": "Gilles Jacob, l'arpenteur de la croisette",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 532951,
+                    "name": "Выбор ребят (ТВ)",
+                    "alternativeName": "Guys Choice",
+                    "rating": 7.8,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 730932,
+                    "name": "Окно во двор (сериал)",
+                    "alternativeName": "Janela Indiscreta",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 500450,
+                    "name": "Надежда для Гаити: Глобальные выгоды для зоны бедствия (ТВ)",
+                    "alternativeName": "Hope for Haiti Now: A Global Benefit for Earthquake Relief",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 576076,
+                    "name": "67-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 67th Annual Golden Globe Awards",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "играет самого себя - презентатор"
+                },
+                {
+                    "id": 756636,
+                    "name": "Марк в кино (сериал)",
+                    "alternativeName": "Mark at the Movies",
+                    "rating": 5.5,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 708285,
+                    "name": "Проект «7 часов вечера» (сериал)",
+                    "alternativeName": "The 7PM Project",
+                    "rating": 6.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 749627,
+                    "name": "Церемония вручения премии Nickelodeon Kids' Choice Awards 2009 (ТВ)",
+                    "alternativeName": "Nickelodeon Kids' Choice Awards 2009",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 722095,
+                    "name": "Действия разведки: Разбор фильма «Совокупность лжи» (видео)",
+                    "alternativeName": "Actionable Intelligence: Deconstructing «Body of Lies»",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 741607,
+                    "name": "ES.TV HD (сериал)",
+                    "alternativeName": "ES.TV HD",
+                    "rating": 5.2,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 576080,
+                    "name": "66-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 66th Annual Golden Globe Awards",
+                    "rating": 7,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 782965,
+                    "name": "Оскар, шоу начинается (ТВ)",
+                    "alternativeName": "Oscar, que empiece el espectáculo",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя / Ofcr. William M. «Billy» Costigan Jr., хроника, в титрах не указан"
+                },
+                {
+                    "id": 1385300,
+                    "name": null,
+                    "alternativeName": "Notes on an American Film Director at Work",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 803261,
+                    "name": "20-ка Форбс моложе 25-ти: Молодые, богатые и знаменитые (ТВ)",
+                    "alternativeName": "Forbes 20 Under 25: Young, Rich and Famous",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника, в титрах не указан"
+                },
+                {
+                    "id": 399912,
+                    "name": "Все хорошо",
+                    "alternativeName": "Everything's Cool",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 231154,
+                    "name": "Одиннадцатый час",
+                    "alternativeName": "The 11th Hour",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": "играет самого себя - рассказчик"
+                },
+                {
+                    "id": 412379,
+                    "name": "Живая земля (ТВ)",
+                    "alternativeName": "Live Earth",
+                    "rating": 7.2,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 279586,
+                    "name": null,
+                    "alternativeName": "Manufacturing Dissent",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника, в титрах не указан"
+                },
+                {
+                    "id": 500281,
+                    "name": "Экспоуз (сериал)",
+                    "alternativeName": "Xposé",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 496676,
+                    "name": "79-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The 79th Annual Academy Awards",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - номинант & Presenter"
+                },
+                {
+                    "id": 500266,
+                    "name": "Шоу с Кэрри Киган (сериал)",
+                    "alternativeName": "Up Close with Carrie Keagan",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 543984,
+                    "name": "13-я церемония вручения премии Гильдии киноактеров (ТВ)",
+                    "alternativeName": "13th Annual Screen Actors Guild Awards",
+                    "rating": 4.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 576081,
+                    "name": "64-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 64th Annual Golden Globe Awards",
+                    "rating": 5.8,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 803249,
+                    "name": "100 знаменитостей по версии Форбс: Кто сделал банк? (ТВ)",
+                    "alternativeName": "Forbes Celebrity 100: Who Made Bank?",
+                    "rating": 5.3,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 431090,
+                    "name": "Первоклассный дебют (ТВ)",
+                    "alternativeName": "Celebrity Debut",
+                    "rating": 5.4,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 543968,
+                    "name": "12-я церемония вручения премии Гильдии киноактеров (ТВ)",
+                    "alternativeName": "12th Annual Screen Actors Guild Awards",
+                    "rating": 5.2,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 543966,
+                    "name": "63-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 63rd Annual Golden Globe Awards",
+                    "rating": 6.1,
+                    "general": false,
+                    "description": "играет самого себя - презентатор"
+                },
+                {
+                    "id": 666732,
+                    "name": "Сделано в Голливуде (сериал)",
+                    "alternativeName": "Made in Hollywood",
+                    "rating": 7.6,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 496726,
+                    "name": "77-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The 77th Annual Academy Awards",
+                    "rating": 6.6,
+                    "general": false,
+                    "description": "играет самого себя - номинант & Presenter"
+                },
+                {
+                    "id": 806822,
+                    "name": "11-я церемония вручения премии Гильдии киноактеров (ТВ)",
+                    "alternativeName": "11th Annual Screen Actors Guild Awards",
+                    "rating": 4.8,
+                    "general": false,
+                    "description": "играет самого себя - номинант: Outstanding Performance by a Male Actor in a Leading Role / Outstanding Performance by a Cast of a Motion Picture / Co-Presenter: Film Clip from «The Aviator»"
+                },
+                {
+                    "id": 543971,
+                    "name": "62-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 62nd Annual Golden Globe Awards",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя - победитель"
+                },
+                {
+                    "id": 754528,
+                    "name": "Помощь пострадавшим от цунами: Концерт надежды (ТВ)",
+                    "alternativeName": "Tsunami Aid: A Concert of Hope",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 794436,
+                    "name": "Только в Лос-Анджелесе (сериал)",
+                    "alternativeName": "Only in LA",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 841160,
+                    "name": "Инсайдер (сериал)",
+                    "alternativeName": "The Insider",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 510066,
+                    "name": "Великий журнал Канала+ (сериал)",
+                    "alternativeName": "Le grand journal de Canal+",
+                    "rating": 6,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 818263,
+                    "name": "В фильмах (сериал)",
+                    "alternativeName": "At the Movies",
+                    "rating": 5.3,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 576077,
+                    "name": "61-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 61st Annual Golden Globe Awards",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя - презентатор"
+                },
+                {
+                    "id": 445866,
+                    "name": "Эллен: Шоу Эллен ДеДженерес (сериал)",
+                    "alternativeName": "Ellen: The Ellen DeGeneres Show",
+                    "rating": 8.2,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 407338,
+                    "name": "Джимми Киммел в прямом эфире (сериал)",
+                    "alternativeName": "Jimmy Kimmel Live!",
+                    "rating": 7.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 576078,
+                    "name": "60-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 60th Annual Golden Globe Awards",
+                    "rating": 6,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 574560,
+                    "name": "Сказочная жизнь (сериал)",
+                    "alternativeName": "The Fabulous Life of",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 25307,
+                    "name": "Все любят тебя, Канны!",
+                    "alternativeName": "All the Love You Cannes!",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя, в титрах не указан"
+                },
+                {
+                    "id": 251704,
+                    "name": "Истории фестиваля (ТВ)",
+                    "alternativeName": "Histoires de festival",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 447680,
+                    "name": "Playboy: Внутри дворца «Плейбой» (ТВ)",
+                    "alternativeName": "Playboy: Inside the Playboy Mansion",
+                    "rating": 5.2,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 481018,
+                    "name": "Говорите по-английски? (сериал)",
+                    "alternativeName": "Eigo de shabera-night",
+                    "rating": 5.3,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 477398,
+                    "name": "Ричард и Джуди (сериал)",
+                    "alternativeName": "Richard & Judy",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 414899,
+                    "name": "VH1: Полный доступ (сериал)",
+                    "alternativeName": "VH1: All Access",
+                    "rating": 6,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 295476,
+                    "name": "Концерт для города Нью-Йорка (ТВ)",
+                    "alternativeName": "The Concert for New York City",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 855860,
+                    "name": "История и Голливуд (сериал)",
+                    "alternativeName": "History vs. Hollywood",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 772993,
+                    "name": "Двадцатый век Фокс: Годы блокбастеров (ТВ)",
+                    "alternativeName": "Twentieth Century Fox: The Blockbuster Years",
+                    "rating": 5.3,
+                    "general": false,
+                    "description": "Romeo / Jack Dawson, хроника"
+                },
+                {
+                    "id": 647920,
+                    "name": "Биография тысячелетия: 100 человек – 1000 лет (мини-сериал)",
+                    "alternativeName": "Biography of the Millennium: 100 People - 1000 Years",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 765932,
+                    "name": "Развлекательный бизнес (мини-сериал)",
+                    "alternativeName": "Bravo Profiles: The Entertainment Business",
+                    "rating": 5.5,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 301410,
+                    "name": "Для Лео с любовью (видео)",
+                    "alternativeName": "To Leo with Love",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 328171,
+                    "name": "Титаник: Абсолютно новая история (ТВ)",
+                    "alternativeName": "Titanic: Breaking New Ground",
+                    "rating": 7.5,
+                    "general": false,
+                    "description": "играет самого себя, Jack Dawson"
+                },
+                {
+                    "id": 576067,
+                    "name": "55-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 55th Annual Golden Globe Awards",
+                    "rating": 5.9,
+                    "general": false,
+                    "description": "играет самого себя - номинант: Best Actor in a Motion Picture - Drama"
+                },
+                {
+                    "id": 445980,
+                    "name": "Роковые женщины: Шэрон Стоун (ТВ)",
+                    "alternativeName": "Femmes Fatales: Sharon Stone",
+                    "rating": 5.6,
+                    "general": false,
+                    "description": "играет самого себя, хроника, в титрах не указан"
+                },
+                {
+                    "id": 505671,
+                    "name": "Упорный (сериал)",
+                    "alternativeName": "Taff",
+                    "rating": 4.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 404002,
+                    "name": "Режиссеры (сериал)",
+                    "alternativeName": "The Directors",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 584501,
+                    "name": "От сердца (сериал)",
+                    "alternativeName": "Corazón de...",
+                    "rating": 6.3,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 842906,
+                    "name": "Доступ в Голливуд (сериал)",
+                    "alternativeName": "Access Hollywood",
+                    "rating": 5.3,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 787583,
+                    "name": "Мир ВИП (сериал)",
+                    "alternativeName": "Mundo VIP",
+                    "rating": 4.9,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 364529,
+                    "name": "Полное затмение (ТВ)",
+                    "alternativeName": "Total Eclipse",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 905053,
+                    "name": null,
+                    "alternativeName": "E! Live from the Red Carpet (сериал)",
+                    "rating": 5.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 1302571,
+                    "name": null,
+                    "alternativeName": "X-Girl",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя, в титрах не указан"
+                },
+                {
+                    "id": 1261627,
+                    "name": "Утренние новости WGN (сериал)",
+                    "alternativeName": "WGN Morning News",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 703018,
+                    "name": "Экстра (сериал)",
+                    "alternativeName": "Extra",
+                    "rating": 6.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 496689,
+                    "name": "66-я церемония вручения премии «Оскар» (ТВ)",
+                    "alternativeName": "The 66th Annual Academy Awards",
+                    "rating": 6.2,
+                    "general": false,
+                    "description": "играет самого себя - номинант"
+                },
+                {
+                    "id": 576055,
+                    "name": "51-я церемония вручения премии «Золотой глобус» (ТВ)",
+                    "alternativeName": "The 51st Annual Golden Globe Awards",
+                    "rating": 5.1,
+                    "general": false,
+                    "description": "играет самого себя - номинант: лучшая мужская роль второго плана"
+                },
+                {
+                    "id": 655737,
+                    "name": "Вечернее шоу с Дэвидом Леттерманом (сериал)",
+                    "alternativeName": "Late Show with David Letterman",
+                    "rating": 7.5,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 401130,
+                    "name": "HBO: Первый взгляд (сериал)",
+                    "alternativeName": "HBO First Look",
+                    "rating": 8.1,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 408362,
+                    "name": "Ночное шоу с Джейем Лено (сериал)",
+                    "alternativeName": "The Tonight Show with Jay Leno",
+                    "rating": 7.2,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 564847,
+                    "name": "Дни кино (сериал)",
+                    "alternativeName": "Días de cine",
+                    "rating": 5.6,
+                    "general": false,
+                    "description": "играет самого себя - интервьюируемый"
+                },
+                {
+                    "id": 756736,
+                    "name": "Шоу Чарли Роуза (сериал)",
+                    "alternativeName": "Charlie Rose",
+                    "rating": 5.7,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 712752,
+                    "name": "Слово (сериал)",
+                    "alternativeName": "The Word",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 844106,
+                    "name": "Оборотная сторона (сериал)",
+                    "alternativeName": "Inside Edition",
+                    "rating": 5.4,
+                    "general": false,
+                    "description": "играет самого себя, хроника"
+                },
+                {
+                    "id": 765077,
+                    "name": "Сегодня утром (сериал)",
+                    "alternativeName": "CBS This Morning",
+                    "rating": 4.8,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 426992,
+                    "name": "Выходные сегодня (сериал)",
+                    "alternativeName": "Weekend Today",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 393877,
+                    "name": "Биография (сериал)",
+                    "alternativeName": "Biography",
+                    "rating": 7.9,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 468620,
+                    "name": "Шоу Опры Уинфри (сериал)",
+                    "alternativeName": "The Oprah Winfrey Show",
+                    "rating": 6.3,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 445023,
+                    "name": "В прямом эфире с Ларри Кингом (сериал)",
+                    "alternativeName": "Larry King Live",
+                    "rating": 6.1,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 445917,
+                    "name": "Три кинотеатра (сериал)",
+                    "alternativeName": "Cinema 3",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - интервьюируемый"
+                },
+                {
+                    "id": 689581,
+                    "name": "Журнал «20 часов» (сериал)",
+                    "alternativeName": "20 heures le journal",
+                    "rating": 5.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 587593,
+                    "name": "Развлечения сегодня вечером (сериал)",
+                    "alternativeName": "Entertainment Tonight",
+                    "rating": 7.2,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 945339,
+                    "name": null,
+                    "alternativeName": "Wetten, dass..? (сериал)",
+                    "rating": 0,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 400753,
+                    "name": "Saturday Night Live (сериал)",
+                    "alternativeName": "Saturday Night Live",
+                    "rating": 8.4,
+                    "general": false,
+                    "description": "играет самого себя, в титрах не указан"
+                },
+                {
+                    "id": 594789,
+                    "name": "Доброе утро, Америка (сериал)",
+                    "alternativeName": "Good Morning America",
+                    "rating": 6.8,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                },
+                {
+                    "id": 447123,
+                    "name": "Фантастический (сериал)",
+                    "alternativeName": "Fantástico",
+                    "rating": 6.7,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 756628,
+                    "name": "Фильм '72 (сериал)",
+                    "alternativeName": "Film '72",
+                    "rating": 6.4,
+                    "general": false,
+                    "description": "играет самого себя"
+                },
+                {
+                    "id": 667205,
+                    "name": "Сегодня (сериал)",
+                    "alternativeName": "Today",
+                    "rating": 6.9,
+                    "general": false,
+                    "description": "играет самого себя - гость"
+                }
+            ],
+            "age": 46,
+            "birthday": "1974-11-11T00:00:00.000Z",
+            "countAwards": 1,
+            "death": null,
+            "growth": 183,
+            "sex": "Мужской"
+        }
+
+
+#### Поиск персон по имени [GET]
+При поиске по полям содержащих текст стоит учитывать, что по умолчанию поиск строгий, но строгий режим можно отключить добавив параметр `isStrict=false`. Тогда поиск будет использовать выражение `/.*текст.*/gi` это сделает текстовый поиск очень гибким, значительно медленным (приходится обходить всю базу) и не совсем точным. Чтобы отображать более релевантные результаты придется добавлять сортировки.
++ Parameters
+    + search: name (string) - Искомое значение `name`
+    + field: Лео (string) - Поиск по `Лео`
+
++ Response 200 (application/json)
+
+        {
+            "docs": [
+                {
+                    "id": 4764622,
+                    "name": "Лео Кастро",
+                    "enName": "Leo Castro",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_4764622.jpg",
+                    "age": 0,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 194998,
+                    "name": "Лео Каррильо",
+                    "enName": "Leo Carrillo",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_194998.jpg",
+                    "age": 80,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 201382,
+                    "name": "Леон Шэмрой",
+                    "enName": "Leon Shamroy",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_201382.jpg",
+                    "age": 72,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 176277,
+                    "name": "Леонид Марков",
+                    "enName": null,
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_176277.jpg",
+                    "age": 63,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 5813,
+                    "name": "Лео Росси",
+                    "enName": "Leo Rossi",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_5813.jpg",
+                    "age": 74,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 1091615,
+                    "name": "Лео-Поль Салмейн",
+                    "enName": "Léo-Paul Salmain",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1091615.jpg",
+                    "age": 26,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 204328,
+                    "name": "Лео Кастилло",
+                    "enName": "Leo Castillo",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_204328.jpg",
+                    "age": 89,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 204327,
+                    "name": "Леонард Праскинс",
+                    "enName": "Leonard Praskins",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_204327.jpg",
+                    "age": 72,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 1917046,
+                    "name": "Лео Дж. Вогт",
+                    "enName": "Leo J. Vogt",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1917046.jpg",
+                    "age": 0,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 452685,
+                    "name": "Лео Нуччи",
+                    "enName": "Leo Nucci",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_452685.jpg",
+                    "age": 78,
+                    "sex": "Мужской"
+                }
+            ],
+            "total": 4353,
+            "limit": 10,
+            "page": 1,
+            "pages": 436
+        }
+
+#### Поиск персон дате рождения [GET]
+
++ Parameters
+    + search: 37859 (string) - Искомое значение `11.11.1974`
+    + field: id (string) - Поиск по `birthday`
+
++ Response 200 (application/json)
+
+        {
+            "docs": [
+                {
+                    "id": 560393,
+                    "name": "Марта Тебар",
+                    "enName": "Marta Tébar",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_560393.jpg",
+                    "age": 46,
+                    "sex": "Женский"
+                },
+                {
+                    "id": 1913106,
+                    "name": "Аарон Ливин",
+                    "enName": "Aaron Levene",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1913106.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 37859,
+                    "name": "Леонардо ДиКаприо",
+                    "enName": "Leonardo DiCaprio",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_37859.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 4059746,
+                    "name": null,
+                    "enName": "Shannon Simone Miller",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_4059746.jpg",
+                    "age": 46,
+                    "sex": "Женский"
+                },
+                {
+                    "id": 231403,
+                    "name": "Юрий Лагута",
+                    "enName": null,
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_231403.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 1454842,
+                    "name": "Джон Б.",
+                    "enName": "Jon B.",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1454842.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 67481,
+                    "name": "Сун Хи Ньюболд",
+                    "enName": "Soon Hee Newbold",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_67481.jpg",
+                    "age": 46,
+                    "sex": "Женский"
+                },
+                {
+                    "id": 1478493,
+                    "name": "Маттиас Кноп",
+                    "enName": "Matthias Knop",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_1478493.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                },
+                {
+                    "id": 245734,
+                    "name": "Олеся Железняк",
+                    "enName": null,
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_245734.jpg",
+                    "age": 46,
+                    "sex": "Женский"
+                },
+                {
+                    "id": 474667,
+                    "name": "Дэвид Талли",
+                    "enName": "David Tully",
+                    "photo": "https://st.kp.yandex.net/images/actor_iphone/iphone360_474667.jpg",
+                    "age": 46,
+                    "sex": "Мужской"
+                }
+            ],
+            "total": 467,
+            "limit": 10,
+            "page": 1,
+            "pages": 47
+        }
+
+
 # GET /review
 
 Логика работы поиска по отзывам ровно такая же как и по фильмам. 
@@ -1900,7 +4074,1085 @@ Movie хранит в себе фильмы, сериалы, мультфиль�
 
 # GET /image
 
-# GET /season
+### Поиск [/image]
+
++ Parameters
+    + search: (string) - Искомое значение
+    + token: `ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06` (string) - Токен для авторизации
+
+#### Поиск по id кинопоиска [GET]
+
++ Parameters
+    + search: 326 (string) - Искомое значение `326`
+    + field: movieId (string) - Поиск по `movieId`
+    + limit: 100 (string) - Количество картинок на одной странице `100`
+
++ Response 200 (application/json)
+
+        {
+            "docs": [
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/tXHpvlr5F7gV5DwgS7M5HBrUi2C.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "pt",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/iNh3BivHyg5sQRPP1KOkzguEX0H.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/iNh3BivHyg5sQRPP1KOkzguEX0H.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/ybQChWyYRbEmLCVeyK06xFM9gj4.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/ybQChWyYRbEmLCVeyK06xFM9gj4.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/xXXFdqV965crlxCO3dj3PhtcCAf.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/xXXFdqV965crlxCO3dj3PhtcCAf.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/9Xw0I5RV2ZqNLpul6lXKoviYg55.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/9Xw0I5RV2ZqNLpul6lXKoviYg55.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/gZMgEUYbh0DIBNaRJT0ofxLDJ5T.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/gZMgEUYbh0DIBNaRJT0ofxLDJ5T.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/wQP54Zdje3NO0xX8CbmzB07NXNp.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/wQP54Zdje3NO0xX8CbmzB07NXNp.jpg",
+                    "height": 964,
+                    "width": 1712,
+                    "language": "de",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/qCUjQId2jQS53edDKQXBJojd5sd.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/qCUjQId2jQS53edDKQXBJojd5sd.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "es",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/pdKcdpxqgCcI0vhDgUkfnFUkNZO.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/pdKcdpxqgCcI0vhDgUkfnFUkNZO.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/A8dxAysDvK3tL5Gy6oI3VT5nYNT.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/A8dxAysDvK3tL5Gy6oI3VT5nYNT.jpg",
+                    "height": 720,
+                    "width": 1280,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/7xofUKLihje3kQGOMLpQpVRO0Bf.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/7xofUKLihje3kQGOMLpQpVRO0Bf.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/avedvodAZUcwqevBfm8p4G2NziQ.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/avedvodAZUcwqevBfm8p4G2NziQ.jpg",
+                    "height": 1180,
+                    "width": 2100,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/ocZznoXN2rhcqV570i3gtbStLIO.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/ocZznoXN2rhcqV570i3gtbStLIO.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/36ewyr1LdwwedDQhrlmhsi1nlnc.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/36ewyr1LdwwedDQhrlmhsi1nlnc.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/1bGBTCPC1lcvrNTluh1bgr1dd2F.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/1bGBTCPC1lcvrNTluh1bgr1dd2F.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "en",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/6ihu1b2OA0aQY1gp95B7644qeyy.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/6ihu1b2OA0aQY1gp95B7644qeyy.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/rkIG2F13j9VXqs3Pez3yL9iXGBS.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/rkIG2F13j9VXqs3Pez3yL9iXGBS.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/gNCqY2Y6e3wV8cnSVy4Xqpdl6oE.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/gNCqY2Y6e3wV8cnSVy4Xqpdl6oE.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/72rRSPAZ82p3KXoGLz2ddTioMQl.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/72rRSPAZ82p3KXoGLz2ddTioMQl.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/odJPRSRkfc5M1HpBoIAFe46RlfI.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/odJPRSRkfc5M1HpBoIAFe46RlfI.jpg",
+                    "height": 720,
+                    "width": 1280,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/1c7EVzpMudkPRwqYU1vjrUnxXX2.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/1c7EVzpMudkPRwqYU1vjrUnxXX2.jpg",
+                    "height": 720,
+                    "width": 1280,
+                    "language": null,
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/kIGUJwrRTjiuaDxphhkP1eIeril.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/kIGUJwrRTjiuaDxphhkP1eIeril.jpg",
+                    "height": 2160,
+                    "width": 3840,
+                    "language": "it",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/dpSypP6IjUXJDSFYJAnNoS5KPKR.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/dpSypP6IjUXJDSFYJAnNoS5KPKR.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "de",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523744.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523744.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523743.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523743.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523742.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523742.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523741.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523741.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523740.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523740.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1523739.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1523739.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485761.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485761.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485760.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485760.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485759.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485759.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485758.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485758.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485757.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485757.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485754.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485754.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485752.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485752.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485751.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485751.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485750.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485750.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1485749.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1485749.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477348.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477348.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477347.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477347.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477346.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477346.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477345.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477345.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477344.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477344.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477343.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477343.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477342.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477342.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477341.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477341.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477340.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477340.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477339.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477339.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477338.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477338.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477337.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477337.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477336.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477336.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477335.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477335.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477334.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477334.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477333.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477333.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477332.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477332.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477328.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477328.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477327.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477327.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477326.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477326.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477325.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477325.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477324.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477324.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/1477323.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_1477323.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/924915.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_924915.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/924914.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_924914.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/924913.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_924913.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/924912.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_924912.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/924911.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_924911.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531695.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531695.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531693.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531693.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531692.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531692.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531691.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531691.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531690.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531690.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531689.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531689.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531687.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531687.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/531686.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_531686.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44870_5.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44870_5.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44869_4.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44869_4.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44868_3.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44868_3.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44867_8.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44867_8.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44866_2.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44866_2.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44865_6.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44865_6.jpg",
+                    "height": null,
+                    "width": null
+                },
+                {
+                    "movieId": 326,
+                    "type": "frame",
+                    "language": null,
+                    "url": "https://st.kp.yandex.net/images/kadr/44864_1.jpg",
+                    "previewUrl": "https://st.kp.yandex.net/images/kadr/sm_44864_1.jpg",
+                    "height": null,
+                    "width": null
+                }
+            ],
+            "total": 82,
+            "limit": 100,
+            "page": 1,
+            "pages": 1
+        }
+        
+### Пример получения конкретных картинок  [/image?field=movieId&search=326&field=type&search=backdrops&field=language&search=de]
+
+#### Поиск фонов по id [GET]
+
+Получаем фоны фильма с id `326` для Германии
+
+| URI Parameters  | |
+| :------------- |:-------------|
+| field      | Поиск по `movieId`|
+| search      | Искомое значение `326`|
+| field      | Поиск по `type`|
+| search      | Искомое значение `backdrops`|
+| field      | Поиск по `language`|
+| search      | Искомое значение `de`|
+
++ Parameters
+    + limit: 100 (string) - Количество картинок на одной странице `100`
+    + token: `ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06` (string) - Токен для авторизации
+
++ Response 200 (application/json)
+
+        {
+            "docs": [
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/wQP54Zdje3NO0xX8CbmzB07NXNp.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/wQP54Zdje3NO0xX8CbmzB07NXNp.jpg",
+                    "height": 964,
+                    "width": 1712,
+                    "language": "de",
+                    "type": "backdrops",
+                    "movieId": 326
+                },
+                {
+                    "url": "https://www.themoviedb.org/t/p/original/dpSypP6IjUXJDSFYJAnNoS5KPKR.jpg",
+                    "previewUrl": "https://www.themoviedb.org/t/p/w500/dpSypP6IjUXJDSFYJAnNoS5KPKR.jpg",
+                    "height": 1080,
+                    "width": 1920,
+                    "language": "de",
+                    "type": "backdrops",
+                    "movieId": 326
+                }
+            ],
+            "total": 2,
+            "limit": 100,
+            "page": 1,
+            "pages": 1
+        }
+
+# GET season, 
+
+### Поиск [/season]
+
++ Parameters
+    + search: (string) - Искомое значение
+    + token: `ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06` (string) - Токен для авторизации
+
+#### Поиск по id кинопоиска [GET]
+
++ Parameters
+    + search: 1253633 (string) - Искомое значение `1253633`
+    + field: movieId (string) - Поиск по `movieId`
+
++ Response 200 (application/json)
+
+        {
+            "docs": [
+                {
+                    "movieId": 1253633,
+                    "number": 1,
+                    "episodesCount": 7,
+                    "episodes": [
+                        {
+                            "_id": "601a55e351178b1f63d73d32",
+                            "number": 1,
+                            "name": "Дебюты",
+                            "enName": "Openings",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Оказавшись в приюте, 9-летняя Бет демонстрирует поразительный талант к шахматам и сталкивается с растущей зависимостью от выдаваемых детям транквилизаторов."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d33",
+                            "number": 2,
+                            "name": "Размены",
+                            "enName": "Exchanges",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "В подростковом возрасте Бет неожиданно погружается в новую жизнь в пригороде, наблюдает за одноклассниками и задумывает принять участие в шахматном турнире."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d34",
+                            "number": 3,
+                            "name": "Сдвоенные пешки",
+                            "enName": "Doubled Pawns",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Поездка в Цинциннати становится для Бет и ее матери началом новой эры, полной разъездов и общения с прессой. Бет решает участвовать в Открытом чемпионате в Лас-Вегасе."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d35",
+                            "number": 4,
+                            "name": "Миттельшпиль",
+                            "enName": "Middle Game",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Изучение русского языка приводит к новым знакомствам. В Мехико Бет встречает знаменитого шахматиста Боргова, а ее мать сближается с другом по переписке."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d36",
+                            "number": 5,
+                            "name": "Вилка",
+                            "enName": "Fork",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Пережившая потрясение Бет возвращается домой в Кентукки. Бывший противник предлагает ей помощь с подготовкой к Чемпионату США."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d37",
+                            "number": 6,
+                            "name": "Откладывание партии",
+                            "enName": "Adjournment",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Бет тренируется с Бенни в Нью-Йорке, а затем отправляется в Париж на матч-реванш с Борговым. Но ночные развлечения возвращают Бет на путь саморазрушения."
+                        },
+                        {
+                            "_id": "601a55e351178b1f63d73d38",
+                            "number": 7,
+                            "name": "Эндшпиль",
+                            "enName": "End Game",
+                            "date": "2020-10-23T00:00:00.000Z",
+                            "description": "Визит старой подруги вынуждает Бет разобраться с прошлым и пересмотреть свои приоритеты. И все это — накануне самой важной игры в ее жизни."
+                        }
+                    ]
+                }
+            ],
+            "total": 1,
+            "limit": 10,
+            "page": 1,
+            "pages": 1
+        }
+
++ Parameters
+    + search: (string) - Искомое значение
+    + token: `ZQQ8GMN-TN54SGK-NB3MKEC-ZKB8V06` (string) - Токен для авторизации
+
+#### Поиск сериалов у которых в одном сезоне от 1 и до 2 серий [GET]
+
++ Parameters
+    + search: 1253633 (string) - Искомое значение `1253633`
+    + field: movieId (string) - Поиск по `movieId`
+
++ Response 200 (application/json)
+
+       {
+            "docs": [
+                {
+                    "movieId": 1118429,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Episode dated 10 April 2018",
+                            "date": "2018-04-10T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 584907,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Episode dated 11 August 1996",
+                            "date": "1996-08-11T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 682484,
+                    "number": 1,
+                    "episodesCount": 2,
+                    "episodes": [
+                        {
+                            "number": 1,
+                            "name": null,
+                            "enName": "Prescription for Disaster/Older People's Money/Great Expectations",
+                            "date": "1992-03-31T00:00:00.000Z",
+                            "description": null
+                        },
+                        {
+                            "number": 2,
+                            "name": null,
+                            "enName": "Made in the USA",
+                            "date": "1992-12-22T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 697455,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "LadyCops: Brotherly Love",
+                            "date": "2009-07-06T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 574205,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "\"MGM: When the Lion Roars\" 1,2&3",
+                            "date": "1992-03-22T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 916136,
+                    "number": 0,
+                    "episodesCount": 2,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Mulan (2020) Angry Movie Review - IT'S NOT GOOD!",
+                            "date": "2020-09-03T00:00:00.000Z",
+                            "description": null
+                        },
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Dune - Angry Trailer Reaction!",
+                            "date": "2020-09-09T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 1201506,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Further Thoughts on Homer Badman",
+                            "date": "2016-04-15T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 717501,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "Teleportation",
+                            "date": null,
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 402937,
+                    "number": 0,
+                    "episodesCount": 1,
+                    "episodes": [
+                        {
+                            "number": 0,
+                            "name": null,
+                            "enName": "The Great Luciani/Wendy Boy",
+                            "date": null,
+                            "description": null
+                        }
+                    ]
+                },
+                {
+                    "movieId": 1326396,
+                    "number": 1,
+                    "episodesCount": 2,
+                    "episodes": [
+                        {
+                            "number": 1,
+                            "name": null,
+                            "enName": "Empire Rising",
+                            "date": "2014-10-05T00:00:00.000Z",
+                            "description": null
+                        },
+                        {
+                            "number": 2,
+                            "name": null,
+                            "enName": "Throne of Power",
+                            "date": "2014-10-12T00:00:00.000Z",
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "total": 15694,
+            "limit": 10,
+            "page": 1,
+            "pages": 1570
+        }
 
 ## Data Structures
 
